@@ -1,38 +1,556 @@
-.App {
-  text-align: center;
+/* 全体のスタイル */
+:root {
+  --primary-color: #4a6fa5;
+  --secondary-color: #6b8cae;
+  --accent-color: #ff6b6b;
+  --background-color: #f8f9fa;
+  --text-color: #333;
+  --border-color: #ddd;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --error-color: #dc3545;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--background-color);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  min-height: 100vh;
+}
+
+/* ナビゲーション */
+.main-navigation {
+  background-color: var(--primary-color);
   color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.App-link {
-  color: #61dafb;
+.nav-logo h1 {
+  font-size: 1.5rem;
+  margin: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin-left: 1.5rem;
+}
+
+.nav-links button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.nav-links button:hover {
+  color: var(--accent-color);
+}
+
+.nav-links li.active button {
+  font-weight: bold;
+  border-bottom: 2px solid white;
+}
+
+/* メインコンテンツ */
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* フォーム要素 */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--secondary-color);
+}
+
+.submit-button {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.save-button {
+  margin-top: 2rem;
+  background-color: var(--success-color);
+}
+
+.save-button:hover {
+  background-color: #218838;
+}
+
+.start-button {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+}
+
+/* エラーメッセージ */
+.error-message {
+  color: var(--error-color);
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+/* ホームページ */
+.home-page {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.home-page h2 {
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+}
+
+.home-page p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+/* テストページ */
+.question-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.question-card h3 {
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.option-label:hover {
+  background-color: #f0f0f0;
+}
+
+.option-label input {
+  margin-right: 0.75rem;
+}
+
+/* テスト結果 */
+.test-results {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.result-section {
+  margin-bottom: 2rem;
+}
+
+.result-section h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.mbti-result {
+  background-color: #e9f2ff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+}
+
+.trait-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.trait-bar {
+  margin-bottom: 1rem;
+}
+
+.trait-label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.bar-container {
+  height: 20px;
+  background-color: #e9ecef;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.bar-fill {
+  height: 100%;
+  background-color: var(--primary-color);
+  border-radius: 10px;
+}
+
+.trait-score {
+  margin-top: 0.25rem;
+  font-weight: bold;
+  text-align: right;
+}
+
+.trait-description {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.result-insights {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+}
+
+.result-insights h3 {
+  margin-bottom: 1rem;
+}
+
+.result-insights ul {
+  padding-left: 1.5rem;
+}
+
+.result-insights li {
+  margin-bottom: 0.5rem;
+}
+
+/* テスト履歴 */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.history-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.history-item {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.history-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.history-item-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.history-item-header h3 {
+  margin: 0;
+  margin-right: auto;
+}
+
+.team-badge,
+.mbti-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
+
+.team-badge {
+  background-color: #e9f2ff;
+  color: var(--primary-color);
+}
+
+.mbti-badge {
+  background-color: #ffefd5;
+  color: #ff8c00;
+}
+
+.test-date {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.big5-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.trait-mini {
+  font-size: 0.8rem;
+  padding: 0.25rem 0.5rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+}
+
+.no-results {
+  text-align: center;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* チーム分析 */
+.team-selector {
+  margin-bottom: 2rem;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.analysis-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.team-members {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.member-list {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.member-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.member-item:last-child {
+  border-bottom: none;
+}
+
+.mbti-distribution,
+.big-five-stats,
+.team-insights {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.distribution-chart,
+.stats-chart {
+  margin-top: 1.5rem;
+}
+
+.distribution-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.type-label {
+  width: 60px;
+  font-weight: bold;
+}
+
+.type-count {
+  width: 50px;
+  text-align: right;
+  margin-right: 1rem;
+}
+
+.type-bar {
+  height: 20px;
+  background-color: var(--primary-color);
+  border-radius: 10px;
+}
+
+.trait-stats {
+  margin-bottom: 1.5rem;
+}
+
+.stats-bar-container {
+  height: 20px;
+  background-color: #e9ecef;
+  border-radius: 10px;
+  position: relative;
+  margin: 0.5rem 0;
+}
+
+.stats-range {
+  height: 100%;
+  background-color: rgba(74, 111, 165, 0.3);
+  position: absolute;
+  border-radius: 10px;
+}
+
+.stats-avg {
+  height: 100%;
+  width: 4px;
+  background-color: var(--primary-color);
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.stats-values {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.insights-list {
+  padding-left: 1.5rem;
+}
+
+.insight-item {
+  margin-bottom: 0.75rem;
+}
+
+.no-team-data {
+  text-align: center;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* フッター */
+.app-footer {
+  background-color: var(--primary-color);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* レスポンシブデザイン */
+@media (min-width: 768px) {
+  .analysis-content {
+    grid-template-columns: repeat(2, 1fr);
   }
-  to {
-    transform: rotate(360deg);
+  
+  .team-members,
+  .team-insights {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-navigation {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  .nav-logo {
+    margin-bottom: 1rem;
+  }
+  
+  .nav-links {
+    width: 100%;
+    justify-content: space-around;
+  }
+  
+  .nav-links li {
+    margin: 0;
+  }
+  
+  .main-content {
+    padding: 1rem;
+  }
+  
+  .filters {
+    flex-direction: column;
   }
 }
