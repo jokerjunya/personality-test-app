@@ -1,46 +1,60 @@
-# Getting Started with Create React App
+# パーソナリティテストアプリ
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+このアプリケーションは、MBTIとBig Fiveのパーソナリティテストを提供し、チーム分析機能を備えたWebアプリケーションです。
 
-## Available Scripts
+## 機能
 
-In the project directory, you can run:
+- MBTIパーソナリティテスト
+- Big Fiveパーソナリティテスト
+- テスト結果の保存と履歴表示
+- チーム単位での分析機能
+- レスポンシブデザイン
 
-### `npm start`
+## 技術スタック
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- React
+- TypeScript
+- LocalStorage（データ保存）
+- CSS（モダンなUIデザイン）
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## インストール方法
 
-### `npm test`
+1. リポジトリをクローン
+```bash
+git clone https://github.com/jokerjunya/personality-test-app.git
+cd personality-test-app
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. 依存パッケージをインストール
+```bash
+npm install
+```
 
-### `npm run build`
+3. アプリケーションを起動
+```bash
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+または
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm run dev
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 使用方法
 
-### `npm run eject`
+1. ホーム画面から「テストを開始する」をクリック
+2. ユーザー情報（名前、チーム名）を入力
+3. MBTIテストに回答
+4. Big Fiveテストに回答
+5. 結果を確認し、保存
+6. 履歴ページで過去の結果を確認
+7. チーム分析ページでチーム全体の傾向を分析
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## ライセンス
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+MIT
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 作者
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+jokerjunya@gmail.com
